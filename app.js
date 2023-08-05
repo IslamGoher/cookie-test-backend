@@ -17,14 +17,17 @@ app.use((req, res, next) => {
 });
 
 app.post("/login", (req, res) => {
-  console.log("POST '/login'");
-  res
-    .cookie("token", "1234567890", {
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxMjM0NTY3ODkiLCJuYW1lIjoiSXNsYW0gR29oZXIiLCJpYXQiOjE1MTYyMzkwMjJ9.9Aw695oReAWTfRn_D2AuVeo-M4Jf5U51Ramg3Tvjmbo";
+  
+    res
+    .cookie("token", token, {
       httpOnly: true,
       sameSite: "strict",
       secure: true,
       path: "/",
       domain: clientDomain,
+      maxAge: 10,
     })
     .json({ status: 200, message: "cookie must be set" });
 });
