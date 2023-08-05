@@ -27,8 +27,8 @@ app.post("/login", (req, res) => {
       secure: true,
       path: "/",
       domain: clientDomain,
-      // maxAge: 10,
-      expires: new Date(Date.now() + 10),
+      maxAge: 60,
+      // expires: new Date(Date.now() + 10),
     })
     .json({ status: 200, message: "cookie must be set" });
 });
